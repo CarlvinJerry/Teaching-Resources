@@ -8,7 +8,7 @@ for(i in 1:n){
 
 #Squares
 
-numbers <- c( 1:10)
+numbers <- c( 22,12,1:10)
 
 ##1
 for (i in 1:10){
@@ -37,7 +37,7 @@ for(i in 1:n){
 }
 
 
-numbers2 <- 1:3
+numbers2 <- c(5,6,7)
 
 for(i in numbers){
   for (j in numbers2){
@@ -49,7 +49,7 @@ for(i in numbers){
 
 #BREAKING LOOPS----------
 #Breaking statement
-numbers <- 1:10
+numbers <- c(2,4,9,6,15,78)
 for (i in numbers){
   if(i == 6){
     print(i * 2)
@@ -68,6 +68,7 @@ for (i in numbers){
   }
   print(i)
 }
+
 
 
 
