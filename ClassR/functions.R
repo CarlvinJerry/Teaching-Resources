@@ -5,11 +5,11 @@ functionName <- function(input){
 }
 
 #Example
-addsTen <- function(numbers){
-  numbers+10
+addsTen <- function(numbers, multiplier = 5){
+  (numbers+10) * multiplier
 }
 
-addsTen(25)
+addsTen(2,10)
 addsTen(numbers)
 
 
@@ -67,7 +67,10 @@ rep(names,3)
 
 
 
-
+mtcars %>%
+  ggplot2::ggplot(aes(wt, mpg, colour = mpg))+
+  geom_line(size = 1.5)+
+  scale_colour_gradient(low = "#6a0dad", high = "#FF0000")
 
 
 
