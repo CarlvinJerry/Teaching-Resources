@@ -44,7 +44,7 @@ boxplot(mpg ~ cyl, data = mtcars, xlab = "No. Of Cylinders", ylab = "Miles Per G
 
 #Add a notch to see how medians relate to each other
 boxplot(mpg ~ cyl, data = mtcars, xlab = "No. Of Cylinders", ylab = "Miles Per Gallon", main ="Car Mileage",names = c("High", "Medium", "Low"),
-        notch = F, col = c("Blue","red","green"))
+        notch = T, col = c("Blue","red","green"))
 
 ##Histogram-----------------------------------------------------------------------------------------------------------------------------------------------
 #Histogram
@@ -74,3 +74,59 @@ plot(data, type = "o", ylab = "Ksh", xlab = "Day", main= "Expenditure Data", col
 data2 <-  c(1:15, 15:2, 3:26)
 plot(data, type = "l", ylab = "Ksh", xlab = "Day", main= "Expenditure Data", col = "green")
 lines( data2, type = "l", col="red")
+lines( data2 *.23, type = "l", col="blue")
+lines( data2 + 2.23, type = "l", col="black")
+
+
+##Scatter Plot-----------------------------------------------------------------------------------------------------------------------------------------------
+#Show points plotted in a cartesian plane. Each point represents a value of two variables.
+#Syntax
+#>> plot(x,y, main,xlab, ylab, xlim, ylim, axes)
+
+#Scatter Plot
+input <- mtcars[, c('wt','mpg')]
+
+plot(x= input$wt, y= input$mpg, xlab = "Weight", ylab = "Mileage", xlim = c(1.5, 6), ylim = c(5,29), main = "Weight vs Mileage", col = "red")
+
+
+
+##Scatter Plot Matrix-----------------------------------------------------------------------------------------------------------------------------------------------
+# Visualizes correlation between variables. It's a matrix of scatter plots
+#>> pairs(formula, data)
+#Formula - series of variables used in pairs
+#Data- data containing the variables
+
+#Scatter plot matrix
+pairs(~wt+mpg+disp+cyl, data = mtcars, main="Scatterplot Matrix")
+
+##Matplot-----------------------------------------------------------------------------------------------------------------------------------------------
+#Plots columns of matricres individually as a function of X
+#> Syntax
+#>> matplot(x, cbind(y1,y2))
+#x, y1, and y2 are vectors or column of a matrix or data frame
+
+x <- 1:10
+y <- x^2
+z <-  x^2-2*x
+matplot(x, cbind(y,z),pch = c(16,1),  xlab = "x", ylab = "x^2 and x^2-2*x")
+legend(1,100, legend = c("y","z"), pch = c(16,1), bty = "y")
+
+
+
+#Dot Plots-------------------------------------------------------------------------
+#Used as an alternative to bar charts
+#Syntax
+#>> dotchart (NumericVector,  cex = 1, col = “black”, labels = NULL, main = NULL, pch = 1, sub = NULL, xlab = NULL)
+dotchart(PlantGrowth$weight, col = "blue", pch = 1, labels =PlantGrowth$group,
+         main="group vs weight",xlab="weight")
+
+
+#Grouped dot plot
+pg <- PlantGrowth
+pg$color[pg$group=="ctrl"] <- "red"
+pg$color[pg$group=="trt2"] <- "black"
+pg$color[pg$group=="trt1"] <- "blue"
+
+# plot the dot chart
+dotchart(PlantGrowth$weight, labels=PlantGrowth$group,cex=0.8,groups= PlantGrowth$group, main="group vs weight",
+         xlab="weight", gcolor="black", color=pg$color)
